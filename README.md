@@ -93,4 +93,4 @@ This extension is open source; contributions and forking are welcome. [The repo 
 
 ## License
 
-[Licensed as MIT open source](https://github.com/zaydek/vscode-extension-task-drawer/blob/main/LICENSE).
+Licensed as [MIT open source](https://github.com/zaydek/vscode-extension-task-drawer/blob/main/LICENSE).
