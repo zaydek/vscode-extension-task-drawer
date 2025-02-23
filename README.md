@@ -1,31 +1,29 @@
 # Task Drawer
 
-A lightweight VS Code extension that adds a "Tasks" sidebar to the Explorer, displaying all tasks defined in your `.vscode/tasks.json` file. It integrates with VS Code’s task schema, providing a simple UI to view your custom tasks, with automatic updates when the file changes.
+This is a lightweight VS Code extension that creates an Explorer View (a small, resizable panel in the sidebar) that corresponds to your `.vscode/tasks.json` file.
 
-## Features
+If you use a `package.json` or a `Makefile`, this is a useful way to provide a UI layer for common tasks that you run in your project. This is especially useful if you need to orchestrate multiple tasks together. Alternatively, you could use something like `concurrently` (from NPM), but sometimes it's hard to decipher logs from multiple commands, so why not keep the terminals separate? That's why I made this for myself.
 
-- Displays all tasks from `.vscode/tasks.json` in a "Tasks" sidebar.
-- Auto-refreshes the sidebar when you edit `tasks.json`.
-- Offers a "Task Sidebar: Refresh" command for manual updates.
+Note that this is not specific to any programming language or environment. It can be generally used with any project that exposes a `.vscode/tasks.json` file.
 
 ## Installation
 
-1. Install the extension from the VS Code Marketplace (or sideload a `.vsix` file).
-2. Add a `.vscode/tasks.json` file to your workspace with your tasks.
+- Install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=zaydek.task-drawer) or by searching for "Task Drawer" in the Extensions sidebar.
+- Add a `.vscode/tasks.json` file to your workspace with your tasks. If you don't see the Explorer View immediately, invoke `Extensions: Refresh` from the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`).
 
-## Example `tasks.json`
+Here's an example of a simple `.vscode/tasks.json` file:
 
 ```json
 {
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build",
+      "label": "🚀 Build",
       "type": "shell",
       "command": "echo Building project..."
     },
     {
-      "label": "Test",
+      "label": "✅ Test",
       "type": "shell",
       "command": "echo Running tests..."
     }
@@ -33,22 +31,70 @@ A lightweight VS Code extension that adds a "Tasks" sidebar to the Explorer, dis
 }
 ```
 
-## Usage
+And here's a more complex example that strings together multiple tasks:
 
-- Open the Explorer sidebar in VS Code.
-- Find the "Tasks" section—it lists all tasks from `.vscode/tasks.json`.
-- Edit `tasks.json` to add or modify tasks; the sidebar updates automatically.
-- Use `Ctrl+Shift+P` > "Task Sidebar: Refresh" to manually reload if needed.
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 Build",
+      "type": "shell",
+      "command": "echo Building project..."
+    },
+    {
+      "label": "✅ Test",
+      "type": "shell",
+      "command": "echo Running tests..."
+    },
+    {
+      "label": "🔧 Build and Test",
+      "dependsOn": ["🚀 Build", "✅ Test"]
+    }
+  ]
+}
+```
 
-## Notes
+[You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
 
-- This is a display-only UI—run tasks via `Terminal > Run Task...` in VS Code.
-- Only tasks from `.vscode/tasks.json` are shown (not auto-detected tasks from extensions).
+## Features
+
+This extension refreshes automatically when you save your `.vscode/tasks.json` file, specifically on file save. If for any reason you want to manually refresh the extension, you can invoke the `Task Sidebar: Refresh` command from the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`).
+
+This extension should be compatible with all VS Code forks, such as Cursor, Windsurf, etc. Feel free to [open an issue](https://github.com/zaydek/vscode-extension-task-drawer/issues) if you encounter any problems.
+
+## Running Tasks
+
+Simply click on a task in the Task Drawer to run it.
+
+Note that tasks support many behaviors. [Here's a snippet from the official documentation](https://code.visualstudio.com/docs/editor/tasks#_run-behavior):
+
+> You can specify a task's run behaviors using the `runOptions` property:
+>
+> - **reevaluateOnRerun:** Controls how variables are evaluated when a task is executed through the Rerun Last Task command. The default is `true`, meaning that variables will be reevaluated when a task is rerun. When set to `false`, the resolved variable values from the previous run of the task will be used.
+>
+> - **runOn:** Specifies when a task is run.
+> - `default` - The task will only be run when executed through the Run Task command.
+> - `folderOpen` - The task will be run when the containing folder is opened. The first time you open a folder that contains a task with `folderOpen`, you will be asked if you want to allow tasks to run automatically in that folder. You can change your decision later using the Manage Automatic Tasks command and selecting between Allow Automatic Tasks and Disallow Automatic Tasks.
+>
+> - **instanceLimit** - The number of instances of the task that are allowed to run simultaneously. The default value is `1`.
+
+[You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
+
+This extension simply provides a UI layer on top of your tasks. It does not have any magical powers or side effects.
 
 ## Contributing
 
-Fork and submit PRs on [GitHub](https://github.com/zaydek/vscode-extension-task-drawer) (replace with your repo link).
+This extension is open source; contributions and forking are welcome. [The repo is here](https://github.com/zaydek/vscode-extension-task-drawer).
 
 ## License
 
-MIT
+[Licensed as MIT open source](https://github.com/zaydek/vscode-extension-task-drawer/blob/main/LICENSE).
+
+```
+
+```
+
+```
+
+```
