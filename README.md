@@ -31,6 +31,8 @@ Here's an example of a simple `.vscode/tasks.json` file:
 }
 ```
 
+<img width="307" alt="Screenshot 2025-02-23 at 4 33 35 AM" src="https://github.com/user-attachments/assets/fbeedf64-008f-4c3b-8049-af130921798c" />
+
 And here's a more complex example that strings together multiple tasks:
 
 ```json
@@ -54,6 +56,8 @@ And here's a more complex example that strings together multiple tasks:
   ]
 }
 ```
+
+<img width="307" alt="Screenshot 2025-02-23 at 4 34 05 AM" src="https://github.com/user-attachments/assets/16b281ed-81fc-4fc8-92d5-ce8baaab536a" />
 
 [You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
 
