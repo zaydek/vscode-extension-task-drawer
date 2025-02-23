@@ -3,6 +3,10 @@
   "displayName": "Task Drawer",
   "description": "A simple extension that adds a sidebar view to display .vscode/tasks.json",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zaydek/vscode-extension-task-drawer"
+  },
   "engines": {
     "vscode": "^1.97.0"
   },

@@ -47,7 +47,7 @@ A lightweight VS Code extension that adds a "Tasks" sidebar to the Explorer, dis
 
 ## Contributing
 
-Fork and submit PRs on [GitHub](#) (replace with your repo link).
+Fork and submit PRs on [GitHub](https://github.com/zaydek/vscode-extension-task-drawer) (replace with your repo link).
 
 ## License
 
