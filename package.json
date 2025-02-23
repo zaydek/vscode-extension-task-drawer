@@ -2,7 +2,7 @@
   "name": "task-drawer",
   "displayName": "Task Drawer",
   "description": "A simple extension that adds a sidebar view to display .vscode/tasks.json",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "ZaydekMichels-Gualtieri",
   "repository": {
     "type": "git",
@@ -29,6 +29,10 @@
       {
         "command": "taskDrawer.refresh",
         "title": "Task Drawer: Refresh"
+      },
+      {
+        "command": "taskDrawer.runTaskFromPalette",
+        "title": "Task Drawer: Run Task…"
       }
     ]
   },

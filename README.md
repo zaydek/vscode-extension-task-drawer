@@ -59,33 +59,87 @@ And here's a more complex example that strings together multiple tasks:
 
 <img width="307" alt="Screenshot 2025-02-23 at 4 34 05 AM" src="https://github.com/user-attachments/assets/16b281ed-81fc-4fc8-92d5-ce8baaab536a" />
 
+And finally, this is the task I originally built this extension to support:
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev:stylex",
+      "type": "shell",
+      "command": "make compile-stylex-dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "dev-group"
+      }
+    },
+    {
+      "label": "dev:bun",
+      "type": "shell",
+      "command": "make compile-bun-dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "dev-group"
+      }
+    },
+    {
+      "label": "dev",
+      "dependsOn": ["dev:stylex", "dev:bun"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "prod",
+      "type": "shell",
+      "command": "make compile-bun-prod",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "prod-serve",
+      "type": "shell",
+      "command": "make compile-bun-prod-serve",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
+```
+
 [You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
 
 ## Features
 
-This extension refreshes automatically when you save your `.vscode/tasks.json` file, specifically on file save. If for any reason you want to manually refresh the extension, you can invoke the `Task Sidebar: Refresh` command from the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`).
+This extension refreshes automatically when you save your `.vscode/tasks.json` file, specifically on file save. If for any reason you want to manually refresh the extension, you can invoke the `Task Drawer: Refresh` command from the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`).
+
+You can run tasks by clicking on them in the Explorer View. This extension does not automatically invoke tasks; it simply provides a UI for you to run them yourself. Note that VS Code does support many behaviors for tasks. [You can learn more about them here](https://code.visualstudio.com/docs/editor/tasks#_run-behavior).
+
+You can also invoke tasks from the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`). Search for `Task Drawer: Run Task…` and then clicking into the task you want to run.
 
 This extension should be compatible with all VS Code forks, such as Cursor, Windsurf, etc. Feel free to [open an issue](https://github.com/zaydek/vscode-extension-task-drawer/issues) if you encounter any problems.
-
-## Running Tasks
-
-Simply click on a task in the Task Drawer to run it.
-
-Note that tasks support many behaviors. [Here's a snippet from the official documentation](https://code.visualstudio.com/docs/editor/tasks#_run-behavior):
-
-> You can specify a task's run behaviors using the `runOptions` property:
->
-> - **reevaluateOnRerun:** Controls how variables are evaluated when a task is executed through the Rerun Last Task command. The default is `true`, meaning that variables will be reevaluated when a task is rerun. When set to `false`, the resolved variable values from the previous run of the task will be used.
->
-> - **runOn:** Specifies when a task is run.
-> - `default` - The task will only be run when executed through the Run Task command.
-> - `folderOpen` - The task will be run when the containing folder is opened. The first time you open a folder that contains a task with `folderOpen`, you will be asked if you want to allow tasks to run automatically in that folder. You can change your decision later using the Manage Automatic Tasks command and selecting between Allow Automatic Tasks and Disallow Automatic Tasks.
->
-> - **instanceLimit** - The number of instances of the task that are allowed to run simultaneously. The default value is `1`.
-
-[You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
-
-This extension simply provides a UI layer on top of your tasks. It does not have any magical powers or side effects.
 
 ## Contributing
 
