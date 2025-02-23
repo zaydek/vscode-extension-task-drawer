@@ -129,7 +129,11 @@ And finally, this is the task I originally built this extension to support:
 }
 ```
 
-[You can learn more about tasks here](https://code.visualstudio.com/docs/editor/tasks).
+<img width="307" alt="Screenshot 2025-02-23 at 5 15 57 AM" src="https://github.com/user-attachments/assets/8b6d72a6-ef20-48da-bf17-9184b373ca35" />
+
+This should give you an idea of when and why this extension can be useful.
+
+[You can learn more about VS Code Tasks here](https://code.visualstudio.com/docs/editor/tasks).
 
 ## Features
 
